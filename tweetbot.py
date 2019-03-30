@@ -73,9 +73,9 @@ def reply_to_tweets():
 
             print('responding back...', flush=True)
 
-            api.update_status('@' + mention.user.screen_name +
+            api.update_status('Hi ' '@' + mention.user.screen_name +
 
-                    'Hi! Health, Wealth and Happiness to you', mention.id)
+                    ' Health, Wealth and Happiness to you', mention.id)
 
 
 
