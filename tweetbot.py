@@ -45,8 +45,7 @@ def reply_to_tweets():
         if '#helloworld' in mention.full_text.lower():
             print('found #helloworld!', flush=True)
             print('responding back...', flush=True)
-            api.update_status('@' + mention.user.screen_name +
-                    ' Health and Happiness ', mention.id)
+            api.update_status('@' + mention.user.screen_name + ' Health, Wealth and Happiness to you today ', mention.id)
 
 while True:
     reply_to_tweets()
