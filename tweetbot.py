@@ -67,13 +67,13 @@ def reply_to_tweets():
 
         store_last_seen_id(last_seen_id, FILE_NAME)
 
-        # if '#helloworld' in mention.full_text.lower():
+        if '#helloworld' in mention.full_text.lower():
 
-          #  print('found #helloworld!', flush=True)
+          print('found #helloworld!', flush=True)
 
-           # print('responding back...', flush=True)
+          print('responding back...', flush=True)
             
-       api.update_status('Hi ' '@' + mention.user.screen_name + ' Health, Wealth and Happiness to you', mention.id)
+          api.update_status('Hi ' '@' + mention.user.screen_name + ' Health, Wealth and Happiness to you', mention.id)
 
 
 
