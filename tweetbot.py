@@ -75,7 +75,7 @@ def reply_to_tweets():
 
             api.update_status('@' + mention.user.screen_name +
 
-                    '#HelloWorld back to you!', mention.id)
+                    'Hi! Health, Wealth and Happiness to you', mention.id)
 
 
 
