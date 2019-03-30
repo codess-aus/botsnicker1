@@ -55,9 +55,33 @@ def reply_to_tweets():
 
     mentions = api.mentions_timeline(
 
-                        last_seen_id,
+ def store_last_seen_id(last_seen_id, file_name):
 
-                        tweet_mode='extended')
+    f_write = open(file_name, 'w')
+
+    f_write.write(str(last_seen_id))
+
+    f_write.close()
+
+    return
+
+
+
+def reply_to_tweets():
+
+    print('retrieving and replying to tweets...', flush=True)
+
+    # DEV NOTE: use 1060651988453654528 for testing.
+
+    last_seen_id = retrieve_last_seen_id(FILE_NAME)
+
+    # NOTE: We need to use tweet_mode='extended' below to show
+
+    # all full tweets (with full_text). Without it, long tweets
+
+    # would be cut off.
+
+    mentions = api.mentions_timeline(last_seen_id, tweet_mode='extended')
 
     for mention in reversed(mentions):
 
@@ -73,10 +97,7 @@ def reply_to_tweets():
 
             print('responding back...', flush=True)
 
-            api.update_status('@' + mention.user.screen_name +
-
-                    '#HelloWorld back to you!', mention.id)
-
+            api.update_status('Hi @' + mention.user.screen_name + ' Health, Wealth and Happiness to you', mention.id)
 
 
 while True:
