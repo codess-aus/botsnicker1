@@ -2,17 +2,14 @@ import tweepy
 import time
 from keys import * 
 
+# NOTE: flush=True is just for running this script
+# with PythonAnywhere's always-on task.
+# More info: https://help.pythonanywhere.com/pages/AlwaysOnTasks/
+print('this is my twitter bot', flush=True)
+
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
-
-# api.update_status("Sending my first tweet via Tweep
-
-
-# while True:
-  #  tweet = scrape_some_data()
-   # api.update_status(tweet)
-    # time.sleep(300)
 
 FILE_NAME = 'last_seen_id.txt'
 
@@ -45,7 +42,8 @@ def reply_to_tweets():
         if '#helloworld' in mention.full_text.lower():
             print('found #helloworld!', flush=True)
             print('responding back...', flush=True)
-            api.update_status('@' + mention.user.screen_name + ' Health, Wealth and Happiness to you today ', mention.id)
+            api.update_status('@' + mention.user.screen_name +
+                    '#HelloWorld back to you!', mention.id)
 
 while True:
     reply_to_tweets()
