@@ -1,2 +1,2 @@
 # botsnicker1
-TwitterBot - still in progress
+TwitterBot - currently running Python Twitterbot @botsnicker deployed through HeroKu App immense-anchorage
