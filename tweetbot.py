@@ -45,6 +45,10 @@ def reply_to_tweets():
             api.update_status('Hi ' '@' + mention.user.screen_name +
                     ' Nice to tweet you', mention.id)
 
+    #for follower in tweepy.Cursor(api.followers).items():
+    #    follower.follow()
+
 while True:
     reply_to_tweets()
     time.sleep(15)
+
