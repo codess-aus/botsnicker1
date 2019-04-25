@@ -43,7 +43,7 @@ def reply_to_tweets():
             print('found #snickers', flush=True)
             print('responding back...', flush=True)
             api.update_status('Hi ' '@' + mention.user.screen_name +
-                    ' Nice to tweet you', mention.id)
+                    ' Just woke up and had to tweet you', mention.id)
 
     #for follower in tweepy.Cursor(api.followers).items():
     #    follower.follow()
