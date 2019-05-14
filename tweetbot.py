@@ -1,5 +1,8 @@
 import tweepy
 import time
+from twython import Twython
+import random
+from messages import messages
 from keys import * 
 
 # NOTE: flush=True is just for running this script
@@ -10,6 +13,13 @@ print('this is my twitter bot', flush=True)
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
+
+twitter = Twython(
+    CONSUMER_KEY,
+    CONSUMER_SECRET,
+    ACCESS_KEY,
+    ACCESS_SECRET,
+)
 
 FILE_NAME = 'last_seen_id.txt'
 
@@ -32,22 +42,17 @@ def reply_to_tweets():
     # NOTE: We need to use tweet_mode='extended' below to show
     # all full tweets (with full_text). Without it, long tweets
     # would be cut off.
-    mentions = api.mentions_timeline(
-                        last_seen_id,
-                        tweet_mode='extended')
+    mentions = api.mentions_timeline(last_seen_id, tweet_mode='extended')
     for mention in reversed(mentions):
+        message = random.choice(messages)
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
         last_seen_id = mention.id
         store_last_seen_id(last_seen_id, FILE_NAME)
-        if '#snickers' in mention.full_text.lower():
-            print('found #snickers', flush=True)
+        if '#ACSWA' in mention.full_text.lower():
+            print('found #acswa', flush=True)
             print('responding back...', flush=True)
-            api.update_status('Hi ' '@' + mention.user.screen_name +
-                    ' Just woke up and had to tweet you', mention.id)
-
-    #for follower in tweepy.Cursor(api.followers).items():
-    #    follower.follow()
-
+            api.update_status('Hi ' '@' + mention.user.screen_name + ' ' + message, mention.id)
+        
 while True:
     reply_to_tweets()
     time.sleep(15)
