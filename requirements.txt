@@ -4,4 +4,3 @@ django-heroku
 tweepy
 messages
 twython
-random
