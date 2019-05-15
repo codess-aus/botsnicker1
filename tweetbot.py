@@ -55,15 +55,21 @@ def reply_to_tweets():
         elif '#snickers' in mention.full_text.lower():
             print('found #snickers', flush=True)
             print('responding back...', flush=True)
-            api.update_status('Hi ' '@' + mention.user.screen_name + " Nice to tweet you!", + message, mention.id)
+            api.update_status('Hi ' '@' + mention.user.screen_name + ' ' + message, mention.id)
         elif '#pupper' in mention.full_text.lower():
             print('found #pupper', flush=True)
             print('responding back...', flush=True)
-            message = "Hello world - here's a pic!"
-            image = open('snicker2.png', 'rb')
+            words = "Wuf wuf - here's a pic! " '@' + mention.user.screen_name
+            # message = "Hello world - here's a pic!"
+            image = open('snickers2.png', 'rb')
             response = twitter.upload_media(media=image)
             media_id = [response['media_id']]
-            twitter.update_status(status=message, media_ids=media_id)
+            #twitter.update_status(status=words, media_ids=media_id)
+            api.update_status(status=words, media_ids=media_id)
+        else:
+            print('default response', flush=True)
+            print('responding back...', flush=True)
+            api.update_status('Hi ' '@' + mention.user.screen_name + ' You gotta use a hashtag to get an automated reply. Try #snickers ', mention.id)
         
 while True:
     reply_to_tweets()
