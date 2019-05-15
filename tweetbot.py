@@ -48,10 +48,22 @@ def reply_to_tweets():
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
         last_seen_id = mention.id
         store_last_seen_id(last_seen_id, FILE_NAME)
-        if '#ACSWA' in mention.full_text.lower():
+        if '#acswa' in mention.full_text.lower():
             print('found #acswa', flush=True)
             print('responding back...', flush=True)
             api.update_status('Hi ' '@' + mention.user.screen_name + ' ' + message, mention.id)
+        elif '#snickers' in mention.full_text.lower():
+            print('found #snickers', flush=True)
+            print('responding back...', flush=True)
+            api.update_status('Hi ' '@' + mention.user.screen_name + " Nice to tweet you!", + message, mention.id)
+        elif '#pupper' in mention.full_text.lower():
+            print('found #pupper', flush=True)
+            print('responding back...', flush=True)
+            message = "Hello world - here's a pic!"
+            image = open('snicker2.png', 'rb')
+            response = twitter.upload_media(media=image)
+            media_id = [response['media_id']]
+            twitter.update_status(status=message, media_ids=media_id)
         
 while True:
     reply_to_tweets()
