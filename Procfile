@@ -1,1 +1,4 @@
-worker: python tweetbot.py
+web: gunicorn app:app --log-file=-
+
+# worker: python tweetbot.py
+
