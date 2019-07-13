@@ -3,7 +3,7 @@ import time
 from twython import Twython
 import random
 from messages import messages
-from keys import * 
+# from keys import * 
 
 print('this is my twitter bot', flush=True)
 
