@@ -5,14 +5,14 @@ from flask import Flask, request
 from twython import Twython
 import random
 from messages import messages
-# from keys import * 
+from keys import * 
 
 print('this is my twitter bot', flush=True)
 
-CONSUMER_KEY = os.environ['CONSUMER_KEY']
-CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
-ACCESS_KEY = os.environ['ACCESS_KEY']
-ACCESS_SECRET = os.environ['ACCESS_SECRET']
+# CONSUMER_KEY = os.environ['CONSUMER_KEY']
+# CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+# ACCESS_KEY = os.environ['ACCESS_KEY']
+# ACCESS_SECRET = os.environ['ACCESS_SECRET']
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -60,7 +60,7 @@ def reply_to_tweets():
             print('found #snickers', flush=True)
             print('responding back...', flush=True)
             api.update_status('Hi ' '@' + mention.user.screen_name + ' ' + message, mention.id)
-        elif '#DDDPerth' in mention.full_text.lower():
+        elif '#dddperth' in mention.full_text.lower():
             print('found #dddperth', flush=True)
             print('responding back...', flush=True)
             words = "The Robots are Rising at #DDDPerth " '@' + mention.user.screen_name
