@@ -5,9 +5,6 @@ import random
 from messages import messages
 from keys import * 
 
-# NOTE: flush=True is just for running this script
-# with PythonAnywhere's always-on task.
-# More info: https://help.pythonanywhere.com/pages/AlwaysOnTasks/
 print('this is my twitter bot', flush=True)
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
