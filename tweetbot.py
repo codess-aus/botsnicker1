@@ -3,7 +3,7 @@ import time
 from twython import Twython
 import random
 from messages import messages
-# from keys import * 
+from keys import * 
 
 print('this is my twitter bot', flush=True)
 
@@ -53,12 +53,12 @@ def reply_to_tweets():
             print('found #snickers', flush=True)
             print('responding back...', flush=True)
             api.update_status('Hi ' '@' + mention.user.screen_name + ' ' + message, mention.id)
-        elif '#pupper' in mention.full_text.lower():
-            print('found #pupper', flush=True)
+        elif '#DDDPerth' in mention.full_text.lower():
+            print('found #dddperth', flush=True)
             print('responding back...', flush=True)
-            words = "Wuf wuf - here's a pic! " '@' + mention.user.screen_name
+            words = "The Robots are Rising at #DDDPerth " '@' + mention.user.screen_name
             # message = "Hello world - here's a pic!"
-            image = open('snickers2.png', 'rb')
+            image = open('dddperth1.png', 'rb')
             response = twitter.upload_media(media=image)
             media_id = [response['media_id']]
             #twitter.update_status(status=words, media_ids=media_id)
