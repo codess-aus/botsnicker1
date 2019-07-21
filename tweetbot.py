@@ -63,8 +63,8 @@ def reply_to_tweets():
         elif '#dddperth' in mention.full_text.lower():
             print('found #dddperth', flush=True)
             print('responding back...', flush=True)
-            api.update_status('Hi ' '@' + mention.user.screen_name + 'The Robots are Rising at #DDDPerth ', mention.id)
-            # words = "The Robots are Rising at #DDDPerth " '@' + mention.user.screen_name
+            # api.update_status('Hi ' '@' + mention.user.screen_name + 'The Robots are Rising at #DDDPerth ', mention.id)
+            words = "The Robots are Rising at #DDDPerth " '@' + mention.user.screen_name
             # message = "Hello world - here's a pic!"
             image = open('dddperth1.png', 'rb')
             response = twitter.upload_media(media=image)
